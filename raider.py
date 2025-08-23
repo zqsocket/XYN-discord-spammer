@@ -30,7 +30,7 @@ def display_logo():
  ╚████╔╝    ╚████╔╝   ██╔██╗ ██║
  ██╔═██╗     ╚██╔╝    ██║╚██╗██║
  ██║  ██║      ██║     ██║ ╚████║
- ╚═╝  ╚═╝      ╚═╝     ╚═╝  ╚═══╝ made by no_devs/zqsoc
+ ╚═╝  ╚═╝      ╚═╝     ╚═╝  ╚═══╝ made by skiddingsrc/devs
 '''
     os.system('cls' if os.name == 'nt' else 'clear')  
     print(Fore.BLUE + logo)
@@ -125,3 +125,4 @@ if __name__ == "__main__":
                 bot.run(TOKEN)  
     else:
         print(Fore.RED + "Unable to load or set a token.")
+
