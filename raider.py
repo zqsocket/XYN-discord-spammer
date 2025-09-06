@@ -30,7 +30,7 @@ def display_logo():
  ╚████╔╝    ╚████╔╝   ██╔██╗ ██║
  ██╔═██╗     ╚██╔╝    ██║╚██╗██║
  ██║  ██║      ██║     ██║ ╚████║
- ╚═╝  ╚═╝      ╚═╝     ╚═╝  ╚═══╝ made by skiddingsrc/devs
+ ╚═╝  ╚═╝      ╚═╝     ╚═╝  ╚═══╝ made by no_devs/zqsoc
 '''
     os.system('cls' if os.name == 'nt' else 'clear')  
     print(Fore.BLUE + logo)
@@ -87,12 +87,18 @@ class SpamButton(discord.ui.View):
         for _ in range(5):  
             await interaction.followup.send(self.message)  
 
-@bot.tree.command(name="spam", description="spams a message 5 times keep pressing button to spam more")
+@bot.tree.command(name="spam", description="Spams a message 5 times per interaction")
 @app_commands.describe(message="The message you want to spam")
 async def spam(interaction: discord.Interaction, message: str):
     view = SpamButton(message)
-    await interaction.response.send_message(f" **Spam message:** : {message}", view=view, ephemeral=True)  
-
+    embed = discord.Embed(
+        title="Spam Setup",
+        description=f"Your spam message has been set.\n\n**Message:** {message}",
+        color=discord.Color.blurple()
+    )
+    embed.set_footer(text="Press the Spam button below to start!")
+    await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
+    
 @bot.event
 async def on_ready():
     display_logo()
@@ -125,4 +131,3 @@ if __name__ == "__main__":
                 bot.run(TOKEN)  
     else:
         print(Fore.RED + "Unable to load or set a token.")
-
